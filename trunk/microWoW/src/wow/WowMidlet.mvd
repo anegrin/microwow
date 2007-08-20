@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MVDData version="1.3">
-    <DesignDocument designVersion="MIDP-2" uidCounter="68">
+    <DesignDocument designVersion="MIDP-2" uidCounter="73">
         <DesignComponent id="$MobileDevice" typeid="MIDP:$MobileDevice" uid="0"/>
         <DesignComponent id="$StartPoint" typeid="MIDP:$StartPoint" uid="1">
             <Property name="targetDisplayable" value="profilesList"/>
@@ -139,16 +139,16 @@
                 <ContainerPropertyItem value="$CommandAction10"/>
             </ContainerProperty>
             <ContainerProperty name="items">
+                <ContainerPropertyItem value="title1"/>
                 <ContainerPropertyItem value="profileNameField"/>
-                <ContainerPropertyItem value="spacer1"/>
+                <ContainerPropertyItem value="title2"/>
                 <ContainerPropertyItem value="profileHostField"/>
                 <ContainerPropertyItem value="profilePortField"/>
                 <ContainerPropertyItem value="profileMACField"/>
-                <ContainerPropertyItem value="spacer2"/>
+                <ContainerPropertyItem value="profileRepeatGauge"/>
+                <ContainerPropertyItem value="title3"/>
                 <ContainerPropertyItem value="profileUsePasswordGroup"/>
                 <ContainerPropertyItem value="profilePasswordField"/>
-                <ContainerPropertyItem value="spacer3"/>
-                <ContainerPropertyItem value="profileRepeatGauge"/>
             </ContainerProperty>
         </DesignComponent>
         <DesignComponent id="profileNameField" typeid="MIDP:javax.microedition.lcdui.TextField" uid="32">
@@ -255,7 +255,6 @@
         </DesignComponent>
         <DesignComponent id="profilePasswordField" typeid="MIDP:javax.microedition.lcdui.TextField" uid="55">
             <Property name="label" value="STRING:Password"/>
-            <Property name="string" value="STRING:"/>
             <Property name="maxSize" value="12"/>
             <Property name="constraints" value="524288"/>
             <ContainerProperty name="commands"/>
@@ -272,25 +271,12 @@
             <Property name="image" value="keyImage"/>
             <Property name="selected" value="false"/>
         </DesignComponent>
-        <DesignComponent id="spacer1" typeid="MIDP-2:javax.microedition.lcdui.Spacer" uid="59">
-            <Property name="minWidth" value="1000"/>
-            <Property name="minHeight" value="1"/>
-            <Property name="preferredSizeY" value="5"/>
-        </DesignComponent>
         <DesignComponent id="profileRepeatGauge" typeid="MIDP:javax.microedition.lcdui.Gauge" uid="63">
             <Property name="label" value="STRING:Packets to send"/>
             <Property name="interactive" value="true"/>
             <Property name="maxValue" value="10"/>
             <Property name="value" value="1"/>
             <ContainerProperty name="commands"/>
-        </DesignComponent>
-        <DesignComponent id="spacer2" typeid="MIDP-2:javax.microedition.lcdui.Spacer" uid="64">
-            <Property name="minWidth" value="1000"/>
-            <Property name="minHeight" value="1"/>
-        </DesignComponent>
-        <DesignComponent id="spacer3" typeid="MIDP-2:javax.microedition.lcdui.Spacer" uid="65">
-            <Property name="minWidth" value="1000"/>
-            <Property name="minHeight" value="1"/>
         </DesignComponent>
         <DesignComponent id="keyImage" typeid="MIDP:javax.microedition.lcdui.Image" uid="66">
             <Property name="imageResourcePath" value="/res/key.png"/>
@@ -301,18 +287,39 @@
             <Property name="actionSource" value="cancelCommand"/>
             <Property name="actionOrigin" value="wakeUpScreen"/>
         </DesignComponent>
+        <DesignComponent id="title1" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="68">
+            <Property name="label" value="STRING:Infos"/>
+            <Property name="font" value="boldFont"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="boldFont" typeid="MIDP:javax.microedition.lcdui.Font" uid="69">
+            <Property name="face" value="FACE_SYSTEM"/>
+            <Property name="style" value="1"/>
+            <Property name="size" value="SIZE_SMALL"/>
+        </DesignComponent>
+        <DesignComponent id="title2" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="70">
+            <Property name="label" value="STRING:Network"/>
+            <Property name="font" value="boldFont"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
+        <DesignComponent id="title3" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="71">
+            <Property name="label" value="STRING:Security"/>
+            <Property name="font" value="boldFont"/>
+            <ContainerProperty name="commands"/>
+        </DesignComponent>
     </DesignDocument>
     <FlowDocument version="1.1">
         <Node id="$MobileDevice" location="160,456" order=",$StartPoint,,,,,,,,,$ExitPoint,,,,,"/>
+        <Node id="profilesList" location="384,456" order="$CommandAction1,$CommandAction2,$CommandAction3,$CommandAction4,$CommandAction11,,,,,,$Default,,,,,"/>
         <Node id="confirmDeletionAlert" location="624,248" order="$CommandAction5,$CommandAction6,,,$CommandAction4$Output,$CommandAction4$Input,,,,,$Default,,,,,"/>
         <Node id="confirmWakeUpAlert" location="624,456" order="$CommandAction7,$CommandAction8,,,$CommandAction3$Output,$CommandAction3$Input,,,,,$Default,,,,,"/>
         <Node id="profileForm" location="624,664" order="$CommandAction9,$CommandAction10,,,,,,,,,$Default,,,,,"/>
         <Node id="wakeUpScreen" location="864,456" order="$InternalCommandAction2,$InternalCommandAction1,$CommandAction12,,,,,,,,$Default,,,,,"/>
         <Node id="wakedUpAlert" location="1096,352" order=",,,,$InternalCommandAction1$Output,$InternalCommandAction1$Input,,,,,$Default,,,,,"/>
         <Node id="notWakedUpAlert" location="1096,560" order=",,,,$InternalCommandAction2$Output,$InternalCommandAction2$Input,,,,,$Default,,,,,"/>
-        <Node id="profilesList" location="384,456" order="$CommandAction1,$CommandAction2,$CommandAction3,$CommandAction4,$CommandAction11,,,,,,$Default,,,,,"/>
         <Link id="$StartPoint$ActionLink" path="200,432,344,432"/>
         <Link id="$CommandAction1$ActionLink" path="424,448,494,448,494,493,47,493,47,432,120,432"/>
+        <Link id="$CommandAction2$ActionLink" path="424,432,486,432,486,640,584,640"/>
         <Link id="$CommandAction3$ActionLink" path="424,416,494,416,494,304,632,304,632,384"/>
         <Link id="$CommandAction4$ActionLink" path="424,400,486,400,486,103,632,103,632,176"/>
         <Link id="$CommandAction5$ActionLink" path="664,240,729,240,729,544,298,544,298,432,344,432"/>
@@ -324,11 +331,10 @@
         <Link id="$CommandAction11$ActionLink" path="408,384,408,338,510,338,510,640,584,640"/>
         <Link id="$InternalCommandAction1$ActionLink" path="904,432,995,432,995,219,1104,219,1104,280"/>
         <Link id="$InternalCommandAction2$ActionLink" path="904,448,976,448,976,424,1104,424,1104,488"/>
+        <Link id="$CommandAction12$ActionLink" path="904,416,976,416,976,319,298,319,298,432,344,432"/>
         <Link id="$CommandAction3$ForwardLink" path="648,384,648,319,298,319,298,432,344,432"/>
         <Link id="$CommandAction4$ForwardLink" path="648,176,648,115,298,115,298,432,344,432"/>
         <Link id="$InternalCommandAction1$ForwardLink" path="1120,280,1120,115,298,115,298,432,344,432"/>
         <Link id="$InternalCommandAction2$ForwardLink" path="1120,488,1120,433,325,432,344,432"/>
-        <Link id="$CommandAction2$ActionLink" path="424,432,486,432,486,640,584,640"/>
-        <Link id="$CommandAction12$ActionLink" path="904,416,976,416,976,319,298,319,298,432,344,432"/>
     </FlowDocument>
 </MVDData>
