@@ -65,11 +65,12 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     private Image errorImage;
     private TextField profilePasswordField;
     private ChoiceGroup profileUsePasswordGroup;
-    private Spacer spacer1;
     private Gauge profileRepeatGauge;
-    private Spacer spacer2;
-    private Spacer spacer3;
-    private Image keyImage;//GEN-END:MVDFields
+    private Image keyImage;
+    private StringItem title1;
+    private Font boldFont;
+    private StringItem title2;
+    private StringItem title3;//GEN-END:MVDFields
     
 //GEN-LINE:MVDMethods
     
@@ -343,16 +344,16 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
         if (profileForm == null) {//GEN-END:MVDGetBegin31
             // Insert pre-init code here
             profileForm = new Form("Profile", new Item[] {//GEN-BEGIN:MVDGetInit31
+                get_title1(),
                 get_profileNameField(),
-                get_spacer1(),
+                get_title2(),
                 get_profileHostField(),
                 get_profilePortField(),
                 get_profileMACField(),
-                get_spacer2(),
+                get_profileRepeatGauge(),
+                get_title3(),
                 get_profileUsePasswordGroup(),
-                get_profilePasswordField(),
-                get_spacer3(),
-                get_profileRepeatGauge()
+                get_profilePasswordField()
             });
             profileForm.addCommand(get_okCommand());
             profileForm.addCommand(get_cancelCommand());
@@ -561,7 +562,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public TextField get_profilePasswordField() {
         if (profilePasswordField == null) {//GEN-END:MVDGetBegin55
             // Insert pre-init code here
-            profilePasswordField = new TextField("Password", "", 12, TextField.ANY | TextField.NON_PREDICTIVE);//GEN-LINE:MVDGetInit55
+            profilePasswordField = new TextField("Password", null, 12, TextField.ANY | TextField.NON_PREDICTIVE);//GEN-LINE:MVDGetInit55
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd55
         return profilePasswordField;
@@ -580,18 +581,6 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
         return profileUsePasswordGroup;
     }//GEN-END:MVDGetEnd57
     
-    /** This method returns instance for spacer1 component and should be called instead of accessing spacer1 field directly.//GEN-BEGIN:MVDGetBegin59
-     * @return Instance for spacer1 component
-     */
-    public Spacer get_spacer1() {
-        if (spacer1 == null) {//GEN-END:MVDGetBegin59
-            // Insert pre-init code here
-            spacer1 = new Spacer(1000, 1);//GEN-BEGIN:MVDGetInit59
-            spacer1.setPreferredSize(-1, 5);//GEN-END:MVDGetInit59
-            // Insert post-init code here
-        }//GEN-BEGIN:MVDGetEnd59
-        return spacer1;
-    }//GEN-END:MVDGetEnd59
     /** This method returns instance for profileRepeatGauge component and should be called instead of accessing profileRepeatGauge field directly.//GEN-BEGIN:MVDGetBegin63
      * @return Instance for profileRepeatGauge component
      */
@@ -603,31 +592,6 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
         }//GEN-BEGIN:MVDGetEnd63
         return profileRepeatGauge;
     }//GEN-END:MVDGetEnd63
-
-    /** This method returns instance for spacer2 component and should be called instead of accessing spacer2 field directly.//GEN-BEGIN:MVDGetBegin64
-     * @return Instance for spacer2 component
-     */
-    public Spacer get_spacer2() {
-        if (spacer2 == null) {//GEN-END:MVDGetBegin64
-            // Insert pre-init code here
-            spacer2 = new Spacer(1000, 1);//GEN-LINE:MVDGetInit64
-            // Insert post-init code here
-        }//GEN-BEGIN:MVDGetEnd64
-        return spacer2;
-    }//GEN-END:MVDGetEnd64
-
-    /** This method returns instance for spacer3 component and should be called instead of accessing spacer3 field directly.//GEN-BEGIN:MVDGetBegin65
-     * @return Instance for spacer3 component
-     */
-    public Spacer get_spacer3() {
-        if (spacer3 == null) {//GEN-END:MVDGetBegin65
-            // Insert pre-init code here
-            spacer3 = new Spacer(1000, 1);//GEN-LINE:MVDGetInit65
-            // Insert post-init code here
-        }//GEN-BEGIN:MVDGetEnd65
-        return spacer3;
-    }//GEN-END:MVDGetEnd65
-
     /** This method returns instance for keyImage component and should be called instead of accessing keyImage field directly.//GEN-BEGIN:MVDGetBegin66
      * @return Instance for keyImage component
      */
@@ -643,6 +607,57 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
         }//GEN-BEGIN:MVDGetEnd66
         return keyImage;
     }//GEN-END:MVDGetEnd66
+
+    /** This method returns instance for title1 component and should be called instead of accessing title1 field directly.//GEN-BEGIN:MVDGetBegin68
+     * @return Instance for title1 component
+     */
+    public StringItem get_title1() {
+        if (title1 == null) {//GEN-END:MVDGetBegin68
+            // Insert pre-init code here
+            title1 = new StringItem("Infos", null);//GEN-BEGIN:MVDGetInit68
+            title1.setFont(get_boldFont());//GEN-END:MVDGetInit68
+            // Insert post-init code here
+        }//GEN-BEGIN:MVDGetEnd68
+        return title1;
+    }//GEN-END:MVDGetEnd68
+
+    /** This method returns instance for boldFont component and should be called instead of accessing boldFont field directly.//GEN-BEGIN:MVDGetBegin69
+     * @return Instance for boldFont component
+     */
+    public Font get_boldFont() {
+        if (boldFont == null) {//GEN-END:MVDGetBegin69
+            // Insert pre-init code here
+            boldFont = Font.getFont(Font.FACE_SYSTEM, 0x1, Font.SIZE_SMALL);//GEN-LINE:MVDGetInit69
+            // Insert post-init code here
+        }//GEN-BEGIN:MVDGetEnd69
+        return boldFont;
+    }//GEN-END:MVDGetEnd69
+
+    /** This method returns instance for title2 component and should be called instead of accessing title2 field directly.//GEN-BEGIN:MVDGetBegin70
+     * @return Instance for title2 component
+     */
+    public StringItem get_title2() {
+        if (title2 == null) {//GEN-END:MVDGetBegin70
+            // Insert pre-init code here
+            title2 = new StringItem("Network", null);//GEN-BEGIN:MVDGetInit70
+            title2.setFont(get_boldFont());//GEN-END:MVDGetInit70
+            // Insert post-init code here
+        }//GEN-BEGIN:MVDGetEnd70
+        return title2;
+    }//GEN-END:MVDGetEnd70
+
+    /** This method returns instance for title3 component and should be called instead of accessing title3 field directly.//GEN-BEGIN:MVDGetBegin71
+     * @return Instance for title3 component
+     */
+    public StringItem get_title3() {
+        if (title3 == null) {//GEN-END:MVDGetBegin71
+            // Insert pre-init code here
+            title3 = new StringItem("Security", null);//GEN-BEGIN:MVDGetInit71
+            title3.setFont(get_boldFont());//GEN-END:MVDGetInit71
+            // Insert post-init code here
+        }//GEN-BEGIN:MVDGetEnd71
+        return title3;
+    }//GEN-END:MVDGetEnd71
     
     public void startApp() {
         initialize();
@@ -936,9 +951,9 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
         profileUsePasswordGroup=null;
         profilePasswordField=null;
         profileRepeatGauge=null;
-        spacer1=null;
-        spacer2=null;
-        spacer3=null;
+        title1=null;
+        title2=null;
+        title3=null;
     }
     
     /**
