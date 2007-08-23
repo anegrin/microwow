@@ -22,12 +22,13 @@ import javax.microedition.io.UDPDatagramConnection;
 import javax.microedition.midlet.*;
 import javax.microedition.lcdui.*;
 import wow.ProfileManager.Profile;
+import wow.l10n.Messages;
 
 /**
  * this is the main class: the MIDlet
  *
  * @author anegrin
- * @version 0.2
+ * @version 0.3
  */
 public class WowMidlet extends MIDlet implements CommandListener, ItemStateListener {
     
@@ -111,6 +112,11 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
                 // Insert post-action code here
             } else if (command == editCommand) {//GEN-LINE:MVDCACase11
                 // Insert pre-action code here
+                
+                if (profilesList.size()==0){
+                    displayError(getMessage("message.noProfileToEdit"));
+                    return;
+                }
                 
                 editingProfile=true;
                 resetProfileForm();
@@ -204,7 +210,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Command get_exitCommand() {
         if (exitCommand == null) {//GEN-END:MVDGetBegin5
             // Insert pre-init code here
-            exitCommand = new Command("Exit", Command.EXIT, 1);//GEN-LINE:MVDGetInit5
+            exitCommand = new Command(getMessage("exitCommand.label"), Command.EXIT, 1);//GEN-LINE:MVDGetInit5
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd5
         return exitCommand;
@@ -216,7 +222,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Command get_newCommand() {
         if (newCommand == null) {//GEN-END:MVDGetBegin6
             // Insert pre-init code here
-            newCommand = new Command("New", Command.SCREEN, 4);//GEN-LINE:MVDGetInit6
+            newCommand = new Command(getMessage("newCommand.label"), Command.SCREEN, 4);//GEN-LINE:MVDGetInit6
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd6
         return newCommand;
@@ -228,7 +234,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public List get_profilesList() {
         if (profilesList == null) {//GEN-END:MVDGetBegin8
             // Insert pre-init code here
-            profilesList = new List("Profiles", Choice.IMPLICIT, new String[0], new Image[0]);//GEN-BEGIN:MVDGetInit8
+            profilesList = new List(getMessage("profilesList.title"), Choice.IMPLICIT, new String[0], new Image[0]);//GEN-BEGIN:MVDGetInit8
             profilesList.addCommand(get_exitCommand());
             profilesList.addCommand(get_newCommand());
             profilesList.addCommand(get_wakeUpCommand());
@@ -251,7 +257,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Command get_wakeUpCommand() {
         if (wakeUpCommand == null) {//GEN-END:MVDGetBegin10
             // Insert pre-init code here
-            wakeUpCommand = new Command("Wake up", Command.OK, 2);//GEN-LINE:MVDGetInit10
+            wakeUpCommand = new Command(getMessage("wakeUpCommand.label"), Command.OK, 2);//GEN-LINE:MVDGetInit10
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd10
         return wakeUpCommand;
@@ -263,7 +269,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Command get_deleteCommand() {
         if (deleteCommand == null) {//GEN-END:MVDGetBegin14
             // Insert pre-init code here
-            deleteCommand = new Command("Delete", Command.ITEM, 5);//GEN-LINE:MVDGetInit14
+            deleteCommand = new Command(getMessage("deleteCommand.label"), Command.ITEM, 5);//GEN-LINE:MVDGetInit14
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd14
         return deleteCommand;
@@ -275,7 +281,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Alert get_confirmDeletionAlert() {
         if (confirmDeletionAlert == null) {//GEN-END:MVDGetBegin21
             // Insert pre-init code here
-            confirmDeletionAlert = new Alert("Delete", "Please confirm profile deletion", get_deleteImage(), AlertType.CONFIRMATION);//GEN-BEGIN:MVDGetInit21
+            confirmDeletionAlert = new Alert(getMessage("confirmDeletionAlert.title"), getMessage("confirmDeletionAlert.text"), get_deleteImage(), AlertType.CONFIRMATION);//GEN-BEGIN:MVDGetInit21
             confirmDeletionAlert.addCommand(get_okCommand());
             confirmDeletionAlert.addCommand(get_cancelCommand());
             confirmDeletionAlert.setCommandListener(this);
@@ -291,7 +297,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Alert get_confirmWakeUpAlert() {
         if (confirmWakeUpAlert == null) {//GEN-END:MVDGetBegin23
             // Insert pre-init code here
-            confirmWakeUpAlert = new Alert("Wake up", "Please confirm system wake up", get_sendImage(), AlertType.CONFIRMATION);//GEN-BEGIN:MVDGetInit23
+            confirmWakeUpAlert = new Alert(getMessage("confirmWakeUpAlert.title"), getMessage("confirmWakeUpAlert.text"), get_sendImage(), AlertType.CONFIRMATION);//GEN-BEGIN:MVDGetInit23
             confirmWakeUpAlert.addCommand(get_okCommand());
             confirmWakeUpAlert.addCommand(get_cancelCommand());
             confirmWakeUpAlert.setCommandListener(this);
@@ -307,7 +313,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Command get_editCommand() {
         if (editCommand == null) {//GEN-END:MVDGetBegin24
             // Insert pre-init code here
-            editCommand = new Command("Edit", Command.ITEM, 3);//GEN-LINE:MVDGetInit24
+            editCommand = new Command(getMessage("editCommand.label"), Command.ITEM, 3);//GEN-LINE:MVDGetInit24
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd24
         return editCommand;
@@ -319,7 +325,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Command get_okCommand() {
         if (okCommand == null) {//GEN-END:MVDGetBegin25
             // Insert pre-init code here
-            okCommand = new Command("Ok", Command.OK, 1);//GEN-LINE:MVDGetInit25
+            okCommand = new Command(getMessage("okCommand.label"), Command.OK, 1);//GEN-LINE:MVDGetInit25
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd25
         return okCommand;
@@ -331,7 +337,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Command get_cancelCommand() {
         if (cancelCommand == null) {//GEN-END:MVDGetBegin26
             // Insert pre-init code here
-            cancelCommand = new Command("Cancel", Command.CANCEL, 2);//GEN-LINE:MVDGetInit26
+            cancelCommand = new Command(getMessage("cancelCommand.label"), Command.CANCEL, 2);//GEN-LINE:MVDGetInit26
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd26
         return cancelCommand;
@@ -343,7 +349,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Form get_profileForm() {
         if (profileForm == null) {//GEN-END:MVDGetBegin31
             // Insert pre-init code here
-            profileForm = new Form("Profile", new Item[] {//GEN-BEGIN:MVDGetInit31
+            profileForm = new Form(getMessage("profileForm.title"), new Item[] {//GEN-BEGIN:MVDGetInit31
                 get_title1(),
                 get_profileNameField(),
                 get_title2(),
@@ -372,7 +378,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public TextField get_profileNameField() {
         if (profileNameField == null) {//GEN-END:MVDGetBegin32
             // Insert pre-init code here
-            profileNameField = new TextField("Name", null, 16, TextField.ANY);//GEN-LINE:MVDGetInit32
+            profileNameField = new TextField(getMessage("profileNameField.title"), null, 16, TextField.ANY);//GEN-LINE:MVDGetInit32
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd32
         return profileNameField;
@@ -384,7 +390,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public TextField get_profileHostField() {
         if (profileHostField == null) {//GEN-END:MVDGetBegin34
             // Insert pre-init code here
-            profileHostField = new TextField("Host", null, 256, TextField.URL);//GEN-LINE:MVDGetInit34
+            profileHostField = new TextField(getMessage("profileHostField.title"), null, 256, TextField.URL);//GEN-LINE:MVDGetInit34
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd34
         return profileHostField;
@@ -396,7 +402,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public TextField get_profilePortField() {
         if (profilePortField == null) {//GEN-END:MVDGetBegin35
             // Insert pre-init code here
-            profilePortField = new TextField("Port", "9", 5, TextField.DECIMAL);//GEN-LINE:MVDGetInit35
+            profilePortField = new TextField(getMessage("profilePortField.title"), "9", 5, TextField.DECIMAL);//GEN-LINE:MVDGetInit35
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd35
         return profilePortField;
@@ -408,7 +414,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public TextField get_profileMACField() {
         if (profileMACField == null) {//GEN-END:MVDGetBegin36
             // Insert pre-init code here
-            profileMACField = new TextField("MAC", "1A:2B:3C:4D:5E:6F", 17, TextField.ANY | TextField.NON_PREDICTIVE);//GEN-LINE:MVDGetInit36
+            profileMACField = new TextField(getMessage("profileMACField.title"), "1A:2B:3C:4D:5E:6F", 17, TextField.ANY | TextField.NON_PREDICTIVE);//GEN-LINE:MVDGetInit36
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd36
         return profileMACField;
@@ -423,9 +429,9 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
             wakeUpScreen = new org.netbeans.microedition.lcdui.WaitScreen(getDisplay());//GEN-BEGIN:MVDGetInit40
             wakeUpScreen.addCommand(get_cancelCommand());
             wakeUpScreen.setCommandListener(this);
-            wakeUpScreen.setTitle("Sending...");
+            wakeUpScreen.setTitle(getMessage("wakeUpScreen.title"));
             wakeUpScreen.setFullScreenMode(true);
-            wakeUpScreen.setText("Sending magic packet");
+            wakeUpScreen.setText(getMessage("wakeUpScreen.text"));
             wakeUpScreen.setImage(get_sendImage());
             wakeUpScreen.setTask(get_sendMagicPacketCancellableTask());//GEN-END:MVDGetInit40
             // Insert post-init code here
@@ -456,7 +462,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Alert get_wakedUpAlert() {
         if (wakedUpAlert == null) {//GEN-END:MVDGetBegin46
             // Insert pre-init code here
-            wakedUpAlert = new Alert("Success", "Magic packet has been sent", get_sendImage(), AlertType.INFO);//GEN-BEGIN:MVDGetInit46
+            wakedUpAlert = new Alert(getMessage("wakedUpAlert.title"), getMessage("wakedUpAlert.text"), get_sendImage(), AlertType.INFO);//GEN-BEGIN:MVDGetInit46
             wakedUpAlert.setTimeout(3000);//GEN-END:MVDGetInit46
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd46
@@ -469,7 +475,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Alert get_notWakedUpAlert() {
         if (notWakedUpAlert == null) {//GEN-END:MVDGetBegin47
             // Insert pre-init code here
-            notWakedUpAlert = new Alert("Failure", "Can\'t send magic packet", get_sendErrorImage(), AlertType.ERROR);//GEN-BEGIN:MVDGetInit47
+            notWakedUpAlert = new Alert(getMessage("notWakedUpAlert.title"), getMessage("notWakedUpAlert.text"), get_sendErrorImage(), AlertType.ERROR);//GEN-BEGIN:MVDGetInit47
             notWakedUpAlert.setTimeout(3000);//GEN-END:MVDGetInit47
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd47
@@ -562,7 +568,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public TextField get_profilePasswordField() {
         if (profilePasswordField == null) {//GEN-END:MVDGetBegin55
             // Insert pre-init code here
-            profilePasswordField = new TextField("Password", null, 12, TextField.ANY | TextField.NON_PREDICTIVE);//GEN-LINE:MVDGetInit55
+            profilePasswordField = new TextField(getMessage("profilePasswordField.title"), null, 12, TextField.ANY | TextField.NON_PREDICTIVE);//GEN-LINE:MVDGetInit55
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd55
         return profilePasswordField;
@@ -574,7 +580,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public ChoiceGroup get_profileUsePasswordGroup() {
         if (profileUsePasswordGroup == null) {//GEN-END:MVDGetBegin57
             // Insert pre-init code here
-            profileUsePasswordGroup = new ChoiceGroup(null, Choice.MULTIPLE, new String[] {"Send password"}, new Image[] {get_keyImage()});//GEN-BEGIN:MVDGetInit57
+            profileUsePasswordGroup = new ChoiceGroup(null, Choice.MULTIPLE, new String[] {getMessage("profileUsePasswordGroup.element.0")}, new Image[] {get_keyImage()});//GEN-BEGIN:MVDGetInit57
             profileUsePasswordGroup.setSelectedFlags(new boolean[] {false});//GEN-END:MVDGetInit57
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd57
@@ -587,7 +593,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Gauge get_profileRepeatGauge() {
         if (profileRepeatGauge == null) {//GEN-END:MVDGetBegin63
             // Insert pre-init code here
-            profileRepeatGauge = new Gauge("Packets to send", true, 10, 1);//GEN-LINE:MVDGetInit63
+            profileRepeatGauge = new Gauge(getMessage("profileRepeatGauge.title"), true, 10, 1);//GEN-LINE:MVDGetInit63
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd63
         return profileRepeatGauge;
@@ -614,7 +620,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public StringItem get_title1() {
         if (title1 == null) {//GEN-END:MVDGetBegin68
             // Insert pre-init code here
-            title1 = new StringItem("Infos", null);//GEN-BEGIN:MVDGetInit68
+            title1 = new StringItem(null, getMessage("title1.text"));//GEN-BEGIN:MVDGetInit68
             title1.setFont(get_boldFont());//GEN-END:MVDGetInit68
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd68
@@ -627,7 +633,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public Font get_boldFont() {
         if (boldFont == null) {//GEN-END:MVDGetBegin69
             // Insert pre-init code here
-            boldFont = Font.getFont(Font.FACE_SYSTEM, 0x1, Font.SIZE_SMALL);//GEN-LINE:MVDGetInit69
+            boldFont = Font.getFont(Font.FACE_SYSTEM, 0x1, Font.SIZE_LARGE);//GEN-LINE:MVDGetInit69
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd69
         return boldFont;
@@ -639,7 +645,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public StringItem get_title2() {
         if (title2 == null) {//GEN-END:MVDGetBegin70
             // Insert pre-init code here
-            title2 = new StringItem("Network", null);//GEN-BEGIN:MVDGetInit70
+            title2 = new StringItem(null, getMessage("title2.text"));//GEN-BEGIN:MVDGetInit70
             title2.setFont(get_boldFont());//GEN-END:MVDGetInit70
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd70
@@ -652,7 +658,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
     public StringItem get_title3() {
         if (title3 == null) {//GEN-END:MVDGetBegin71
             // Insert pre-init code here
-            title3 = new StringItem("Security", null);//GEN-BEGIN:MVDGetInit71
+            title3 = new StringItem(null, getMessage("title3.text"));//GEN-BEGIN:MVDGetInit71
             title3.setFont(get_boldFont());//GEN-END:MVDGetInit71
             // Insert post-init code here
         }//GEN-BEGIN:MVDGetEnd71
@@ -680,7 +686,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
             ProfileManager.getInstance().deleteProfile(currentProfileName);
             profilesList.delete(index);
         } catch (Exception e) {
-            displayError("Can't delete profile "+currentProfileName);
+            displayError(getMessage("message.cantDeleteProfile")+currentProfileName);
         }
     }
     
@@ -721,7 +727,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
             if (!editingProfile) profilesList.append(name, get_itemImage());
             
         } catch (Exception e) {
-            displayError("Can't save profile "+profileNameField.getString());
+            displayError(getMessage("message.cantSaveProfile")+profileNameField.getString());
         }
         
         
@@ -750,7 +756,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
             get_profileRepeatGauge().setValue(currentProfile.getRepeat());
             
         } catch (Exception e) {
-            displayError("Can't delete profile "+currentProfileName);
+            displayError(getMessage("message.cantLoadProfile")+currentProfileName);
         }
     }
     
@@ -767,17 +773,17 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
         String password = profilePasswordField.getString();
         
         if (name==null || name.length()==0){
-            displayError("Profile name is required");
+            displayError(getMessage("message.nameMandatory"));
             return false;
         }
         
         if (host==null || host.length()==0){
-            displayError("Profile host is required");
+            displayError(getMessage("message.hostMandatory"));
             return false;
         }
         
         if (port==null || port.length()==0){
-            displayError("Profile port is required");
+            displayError(getMessage("message.portMandatory"));
             return false;
         }
         
@@ -785,14 +791,14 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
         //and must contain valid hex codes
         if (password!=null && password.length()>0){
             if (password.length()!=12 && password.length()!=8) {
-                displayError("Password address must have 12 or 8 characters");
+                displayError(getMessage("message.passwordLength"));
                 return false;
             } else {
                 try{
                     parsePassword(password);
                 } catch (Exception e){
                     e.printStackTrace();
-                    displayError("Can't parse password; it has to be in the form 1A2B3C4D or 1A2B3C4D5E6F");
+                    displayError(getMessage("message.cantParsePassword"));
                     return false;
                 }
             }
@@ -800,17 +806,17 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
         
         //MAC has to be of 17 chars and must contain valid hex codes separated by :
         if (MAC==null || MAC.length()==0){
-            displayError("Profile MAC is required");
+            displayError(getMessage("message.MACRequired"));
             return false;
         } else if (MAC.length()!=17) {
-            displayError("MAC address must have 17 characters");
+            displayError(getMessage("message.MACLength"));
             return false;
         } else {
             try{
                 parseMAC(MAC);
             } catch (Exception e){
                 e.printStackTrace();
-                displayError("Can't parse MAC address; it has to be in the form 1A:2B:3C:4D:5E:6F");
+                displayError(getMessage("message.cantParseMAC"));
                 return false;
             }
         }
@@ -823,7 +829,7 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
      *
      */
     private void displayError(String message) {
-        Alert error=new Alert("Error", message, get_errorImage(), AlertType.ERROR);
+        Alert error=new Alert(getMessage("genericErrorAlert.title"), message, get_errorImage(), AlertType.ERROR);
         error.setTimeout(Alert.FOREVER);
         getDisplay().setCurrent(error);
     }
@@ -1030,6 +1036,14 @@ public class WowMidlet extends MIDlet implements CommandListener, ItemStateListe
                 profileRepeatGauge.setValue(1);//minimum
             }
         }
+    }
+    
+    /**
+     * get a localized string
+     *
+     */
+    private String getMessage(String key){
+        return Messages.getInstance().getMessage(key);
     }
     
 }
