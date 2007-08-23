@@ -16,6 +16,7 @@
  */
 package wow;
 
+import java.util.Vector;
 import javax.microedition.rms.RecordStore;
 import javax.microedition.rms.RecordStoreException;
 import javax.microedition.rms.RecordStoreNotFoundException;
@@ -24,7 +25,7 @@ import javax.microedition.rms.RecordStoreNotFoundException;
  * this class manage profiles storage
  *
  * @author anegrin
- * @version 0.2
+ * @version 0.3
  */
 public class ProfileManager {
     
@@ -32,6 +33,8 @@ public class ProfileManager {
     
     private byte BYTE_TRUE=1;
     private byte BYTE_FALSE=0;
+    
+    private static String PREFIX="profile.";
     
     /** Creates a new instance of ProfileManager */
     private ProfileManager() {
@@ -50,7 +53,22 @@ public class ProfileManager {
      *
      */
     public String[] getProfileNames(){
-        return RecordStore.listRecordStores();
+        String[] allRecordStoreNames=RecordStore.listRecordStores();
+        if (allRecordStoreNames!=null){
+            Vector names=new Vector(allRecordStoreNames.length);
+            for (int i=0; i < allRecordStoreNames.length; i++) {
+                if (allRecordStoreNames[i].startsWith(PREFIX)){
+                    names.addElement(allRecordStoreNames[i].substring(PREFIX.length()));
+                }
+            }
+            
+            String[] returnMe=new String[names.size()];
+            names.copyInto(returnMe);
+            
+            return returnMe;
+        }
+        
+        return null;
     }
     
     /**
@@ -66,7 +84,7 @@ public class ProfileManager {
                 //don't care; it's a new one
             }
             
-            rs=RecordStore.openRecordStore(profile.getName(), true, RecordStore.AUTHMODE_PRIVATE, true);
+            rs=RecordStore.openRecordStore(PREFIX+profile.getName(), true, RecordStore.AUTHMODE_PRIVATE, true);
             
             byte[] host=profile.getHost().getBytes();
             rs.addRecord(host, 0, host.length);
@@ -99,7 +117,7 @@ public class ProfileManager {
         RecordStore rs=null;
         try {
             
-            rs=RecordStore.openRecordStore(name, false);
+            rs=RecordStore.openRecordStore(PREFIX+name, false);
             
             byte[] host=rs.getRecord(1);
             byte[] port=rs.getRecord(2);
@@ -123,7 +141,7 @@ public class ProfileManager {
      *
      */
     public void deleteProfile(String name) throws RecordStoreException{
-        RecordStore.deleteRecordStore(name);
+        RecordStore.deleteRecordStore(PREFIX+name);
     }
     
     

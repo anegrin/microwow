@@ -7,17 +7,17 @@
             <Property name="targetForwardDisplayable"/>
         </DesignComponent>
         <DesignComponent id="exitCommand" typeid="MIDP:javax.microedition.lcdui.Command" uid="5">
-            <Property name="label" value="STRING:Exit"/>
+            <Property name="label" value="CODE:getMessage(\&quot;exitCommand.label\&quot;)"/>
             <Property name="priority" value="1"/>
             <Property name="type" value="EXIT"/>
         </DesignComponent>
         <DesignComponent id="newCommand" typeid="MIDP:javax.microedition.lcdui.Command" uid="6">
-            <Property name="label" value="STRING:New"/>
+            <Property name="label" value="CODE:getMessage(\&quot;newCommand.label\&quot;)"/>
             <Property name="priority" value="4"/>
             <Property name="type" value="SCREEN"/>
         </DesignComponent>
         <DesignComponent id="profilesList" typeid="MIDP:javax.microedition.lcdui.List" uid="8">
-            <Property name="title" value="STRING:Profiles"/>
+            <Property name="title" value="CODE:getMessage(\&quot;profilesList.title\&quot;)"/>
             <Property name="choiceType" value="IMPLICIT"/>
             <Property name="selectCommandAction" value="$SelectCommandAction1"/>
             <Property name="selectCommand" value="wakeUpCommand"/>
@@ -38,7 +38,7 @@
             <Property name="selectCommand" value="wakeUpCommand"/>
         </DesignComponent>
         <DesignComponent id="wakeUpCommand" typeid="MIDP:javax.microedition.lcdui.Command" uid="10">
-            <Property name="label" value="STRING:Wake up"/>
+            <Property name="label" value="CODE:getMessage(\&quot;wakeUpCommand.label\&quot;)"/>
             <Property name="priority" value="2"/>
             <Property name="type" value="OK"/>
         </DesignComponent>
@@ -61,7 +61,7 @@
             <Property name="actionOrigin" value="profilesList"/>
         </DesignComponent>
         <DesignComponent id="deleteCommand" typeid="MIDP:javax.microedition.lcdui.Command" uid="14">
-            <Property name="label" value="STRING:Delete"/>
+            <Property name="label" value="CODE:getMessage(\&quot;deleteCommand.label\&quot;)"/>
             <Property name="priority" value="5"/>
             <Property name="type" value="ITEM"/>
         </DesignComponent>
@@ -72,39 +72,39 @@
             <Property name="actionOrigin" value="profilesList"/>
         </DesignComponent>
         <DesignComponent id="confirmDeletionAlert" typeid="MIDP:javax.microedition.lcdui.Alert" uid="21">
-            <Property name="title" value="STRING:Delete"/>
+            <Property name="title" value="CODE:getMessage(\&quot;confirmDeletionAlert.title\&quot;)"/>
             <ContainerProperty name="commands">
                 <ContainerPropertyItem value="$CommandAction5"/>
                 <ContainerPropertyItem value="$CommandAction6"/>
             </ContainerProperty>
-            <Property name="string" value="STRING:Please confirm profile deletion"/>
+            <Property name="string" value="CODE:getMessage(\&quot;confirmDeletionAlert.text\&quot;)"/>
             <Property name="timeout" value="-2"/>
             <Property name="type" value="CONFIRMATION"/>
             <Property name="image" value="deleteImage"/>
         </DesignComponent>
         <DesignComponent id="confirmWakeUpAlert" typeid="MIDP:javax.microedition.lcdui.Alert" uid="23">
-            <Property name="title" value="STRING:Wake up"/>
+            <Property name="title" value="CODE:getMessage(\&quot;confirmWakeUpAlert.title\&quot;)"/>
             <ContainerProperty name="commands">
                 <ContainerPropertyItem value="$CommandAction7"/>
                 <ContainerPropertyItem value="$CommandAction8"/>
             </ContainerProperty>
-            <Property name="string" value="STRING:Please confirm system wake up"/>
+            <Property name="string" value="CODE:getMessage(\&quot;confirmWakeUpAlert.text\&quot;)"/>
             <Property name="timeout" value="-2"/>
             <Property name="type" value="CONFIRMATION"/>
             <Property name="image" value="sendImage"/>
         </DesignComponent>
         <DesignComponent id="editCommand" typeid="MIDP:javax.microedition.lcdui.Command" uid="24">
-            <Property name="label" value="STRING:Edit"/>
+            <Property name="label" value="CODE:getMessage(\&quot;editCommand.label\&quot;)"/>
             <Property name="priority" value="3"/>
             <Property name="type" value="ITEM"/>
         </DesignComponent>
         <DesignComponent id="okCommand" typeid="MIDP:javax.microedition.lcdui.Command" uid="25">
-            <Property name="label" value="STRING:Ok"/>
+            <Property name="label" value="CODE:getMessage(\&quot;okCommand.label\&quot;)"/>
             <Property name="priority" value="1"/>
             <Property name="type" value="OK"/>
         </DesignComponent>
         <DesignComponent id="cancelCommand" typeid="MIDP:javax.microedition.lcdui.Command" uid="26">
-            <Property name="label" value="STRING:Cancel"/>
+            <Property name="label" value="CODE:getMessage(\&quot;cancelCommand.label\&quot;)"/>
             <Property name="priority" value="2"/>
             <Property name="type" value="CANCEL"/>
         </DesignComponent>
@@ -133,7 +133,7 @@
             <Property name="actionOrigin" value="confirmWakeUpAlert"/>
         </DesignComponent>
         <DesignComponent id="profileForm" typeid="MIDP:javax.microedition.lcdui.Form" uid="31">
-            <Property name="title" value="STRING:Profile"/>
+            <Property name="title" value="CODE:getMessage(\&quot;profileForm.title\&quot;)"/>
             <ContainerProperty name="commands">
                 <ContainerPropertyItem value="$CommandAction9"/>
                 <ContainerPropertyItem value="$CommandAction10"/>
@@ -152,25 +152,25 @@
             </ContainerProperty>
         </DesignComponent>
         <DesignComponent id="profileNameField" typeid="MIDP:javax.microedition.lcdui.TextField" uid="32">
-            <Property name="label" value="STRING:Name"/>
+            <Property name="label" value="CODE:getMessage(\&quot;profileNameField.title\&quot;)"/>
             <Property name="maxSize" value="16"/>
             <ContainerProperty name="commands"/>
         </DesignComponent>
         <DesignComponent id="profileHostField" typeid="MIDP:javax.microedition.lcdui.TextField" uid="34">
-            <Property name="label" value="STRING:Host"/>
+            <Property name="label" value="CODE:getMessage(\&quot;profileHostField.title\&quot;)"/>
             <Property name="maxSize" value="256"/>
             <Property name="constraints" value="4"/>
             <ContainerProperty name="commands"/>
         </DesignComponent>
         <DesignComponent id="profilePortField" typeid="MIDP:javax.microedition.lcdui.TextField" uid="35">
-            <Property name="label" value="STRING:Port"/>
+            <Property name="label" value="CODE:getMessage(\&quot;profilePortField.title\&quot;)"/>
             <Property name="string" value="STRING:9"/>
             <Property name="maxSize" value="5"/>
             <Property name="constraints" value="5"/>
             <ContainerProperty name="commands"/>
         </DesignComponent>
         <DesignComponent id="profileMACField" typeid="MIDP:javax.microedition.lcdui.TextField" uid="36">
-            <Property name="label" value="STRING:MAC"/>
+            <Property name="label" value="CODE:getMessage(\&quot;profileMACField.title\&quot;)"/>
             <Property name="string" value="STRING:1A:2B:3C:4D:5E:6F"/>
             <Property name="maxSize" value="17"/>
             <Property name="constraints" value="524288"/>
@@ -199,10 +199,10 @@
             <Property name="successCommandAction" value="$InternalCommandAction1"/>
             <Property name="failureCommandAction" value="$InternalCommandAction2"/>
             <Property name="failureAction"/>
-            <Property name="text" value="STRING:Sending magic packet"/>
+            <Property name="text" value="CODE:getMessage(\&quot;wakeUpScreen.text\&quot;)"/>
             <Property name="image" value="sendImage"/>
             <Property name="fullScreen" value="true"/>
-            <Property name="title" value="STRING:Sending..."/>
+            <Property name="title" value="CODE:getMessage(\&quot;wakeUpScreen.title\&quot;)"/>
             <ContainerProperty name="commands">
                 <ContainerPropertyItem value="$CommandAction12"/>
             </ContainerProperty>
@@ -223,17 +223,17 @@
             <Property name="runnableMethodBody" value="sendMagicPacket();"/>
         </DesignComponent>
         <DesignComponent id="wakedUpAlert" typeid="MIDP:javax.microedition.lcdui.Alert" uid="46">
-            <Property name="title" value="STRING:Success"/>
+            <Property name="title" value="CODE:getMessage(\&quot;wakedUpAlert.title\&quot;)"/>
             <ContainerProperty name="commands"/>
-            <Property name="string" value="STRING:Magic packet has been sent"/>
+            <Property name="string" value="CODE:getMessage(\&quot;wakedUpAlert.text\&quot;)"/>
             <Property name="timeout" value="3000"/>
             <Property name="type" value="INFO"/>
             <Property name="image" value="sendImage"/>
         </DesignComponent>
         <DesignComponent id="notWakedUpAlert" typeid="MIDP:javax.microedition.lcdui.Alert" uid="47">
-            <Property name="title" value="STRING:Failure"/>
+            <Property name="title" value="CODE:getMessage(\&quot;notWakedUpAlert.title\&quot;)"/>
             <ContainerProperty name="commands"/>
-            <Property name="string" value="STRING:Can\'t send magic packet"/>
+            <Property name="string" value="CODE:getMessage(\&quot;notWakedUpAlert.text\&quot;)"/>
             <Property name="timeout" value="3000"/>
             <Property name="type" value="ERROR"/>
             <Property name="image" value="sendErrorImage"/>
@@ -254,7 +254,7 @@
             <Property name="imageResourcePath" value="/res/error.png"/>
         </DesignComponent>
         <DesignComponent id="profilePasswordField" typeid="MIDP:javax.microedition.lcdui.TextField" uid="55">
-            <Property name="label" value="STRING:Password"/>
+            <Property name="label" value="CODE:getMessage(\&quot;profilePasswordField.title\&quot;)"/>
             <Property name="maxSize" value="12"/>
             <Property name="constraints" value="524288"/>
             <ContainerProperty name="commands"/>
@@ -267,12 +267,12 @@
             </ContainerProperty>
         </DesignComponent>
         <DesignComponent id="Midp2ChoiceElementDC1" typeid="MIDP:GROUP-org.netbeans.modules.mvd.model.midp2.Midp2ChoiceElementDC" uid="58">
-            <Property name="string" value="STRING:Send password"/>
+            <Property name="string" value="CODE:getMessage(\&quot;profileUsePasswordGroup.element.0\&quot;)"/>
             <Property name="image" value="keyImage"/>
             <Property name="selected" value="false"/>
         </DesignComponent>
         <DesignComponent id="profileRepeatGauge" typeid="MIDP:javax.microedition.lcdui.Gauge" uid="63">
-            <Property name="label" value="STRING:Packets to send"/>
+            <Property name="label" value="CODE:getMessage(\&quot;profileRepeatGauge.title\&quot;)"/>
             <Property name="interactive" value="true"/>
             <Property name="maxValue" value="10"/>
             <Property name="value" value="1"/>
@@ -288,22 +288,22 @@
             <Property name="actionOrigin" value="wakeUpScreen"/>
         </DesignComponent>
         <DesignComponent id="title1" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="68">
-            <Property name="label" value="STRING:Infos"/>
+            <Property name="text" value="CODE:getMessage(\&quot;title1.text\&quot;)"/>
             <Property name="font" value="boldFont"/>
             <ContainerProperty name="commands"/>
         </DesignComponent>
         <DesignComponent id="boldFont" typeid="MIDP:javax.microedition.lcdui.Font" uid="69">
             <Property name="face" value="FACE_SYSTEM"/>
             <Property name="style" value="1"/>
-            <Property name="size" value="SIZE_SMALL"/>
+            <Property name="size" value="SIZE_LARGE"/>
         </DesignComponent>
         <DesignComponent id="title2" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="70">
-            <Property name="label" value="STRING:Network"/>
+            <Property name="text" value="CODE:getMessage(\&quot;title2.text\&quot;)"/>
             <Property name="font" value="boldFont"/>
             <ContainerProperty name="commands"/>
         </DesignComponent>
         <DesignComponent id="title3" typeid="MIDP:javax.microedition.lcdui.StringItem" uid="71">
-            <Property name="label" value="STRING:Security"/>
+            <Property name="text" value="CODE:getMessage(\&quot;title3.text\&quot;)"/>
             <Property name="font" value="boldFont"/>
             <ContainerProperty name="commands"/>
         </DesignComponent>
@@ -318,21 +318,21 @@
         <Node id="wakedUpAlert" location="1096,352" order=",,,,$InternalCommandAction1$Output,$InternalCommandAction1$Input,,,,,$Default,,,,,"/>
         <Node id="notWakedUpAlert" location="1096,560" order=",,,,$InternalCommandAction2$Output,$InternalCommandAction2$Input,,,,,$Default,,,,,"/>
         <Link id="$StartPoint$ActionLink" path="200,432,344,432"/>
-        <Link id="$CommandAction1$ActionLink" path="424,448,494,448,494,493,47,493,47,432,120,432"/>
-        <Link id="$CommandAction2$ActionLink" path="424,432,486,432,486,640,584,640"/>
-        <Link id="$CommandAction3$ActionLink" path="424,416,494,416,494,304,632,304,632,384"/>
-        <Link id="$CommandAction4$ActionLink" path="424,400,486,400,486,103,632,103,632,176"/>
-        <Link id="$CommandAction5$ActionLink" path="664,240,729,240,729,544,298,544,298,432,344,432"/>
-        <Link id="$CommandAction6$ActionLink" path="664,224,729,224,729,544,298,544,298,432,344,432"/>
-        <Link id="$CommandAction7$ActionLink" path="664,448,745,448,745,432,824,432"/>
-        <Link id="$CommandAction8$ActionLink" path="664,432,729,432,729,544,298,544,298,432,344,432"/>
-        <Link id="$CommandAction9$ActionLink" path="664,656,725,656,725,701,298,701,298,432,344,432"/>
-        <Link id="$CommandAction10$ActionLink" path="664,640,725,640,725,701,298,701,298,432,344,432"/>
-        <Link id="$CommandAction11$ActionLink" path="408,384,408,338,510,338,510,640,584,640"/>
-        <Link id="$InternalCommandAction1$ActionLink" path="904,432,995,432,995,219,1104,219,1104,280"/>
-        <Link id="$InternalCommandAction2$ActionLink" path="904,448,976,448,976,424,1104,424,1104,488"/>
-        <Link id="$CommandAction12$ActionLink" path="904,416,976,416,976,319,298,319,298,432,344,432"/>
-        <Link id="$CommandAction3$ForwardLink" path="648,384,648,319,298,319,298,432,344,432"/>
+        <Link id="$CommandAction1$ActionLink" path="424,448,509,448,509,509,47,509,47,432,120,432"/>
+        <Link id="$CommandAction2$ActionLink" path="424,432,525,432,525,640,584,640"/>
+        <Link id="$CommandAction3$ActionLink" path="424,416,519,416,519,316,632,316,632,384"/>
+        <Link id="$CommandAction4$ActionLink" path="424,400,509,400,509,103,632,103,632,176"/>
+        <Link id="$CommandAction5$ActionLink" path="664,240,753,240,753,495,298,495,298,432,344,432"/>
+        <Link id="$CommandAction6$ActionLink" path="664,224,753,224,753,495,298,495,298,432,344,432"/>
+        <Link id="$CommandAction7$ActionLink" path="664,448,767,448,767,432,824,432"/>
+        <Link id="$CommandAction8$ActionLink" path="664,432,758,432,758,495,298,495,298,432,344,432"/>
+        <Link id="$CommandAction9$ActionLink" path="664,656,751,656,751,701,298,701,298,432,344,432"/>
+        <Link id="$CommandAction10$ActionLink" path="664,640,751,640,751,701,298,701,298,432,344,432"/>
+        <Link id="$CommandAction11$ActionLink" path="408,384,408,297,530,297,530,640,584,640"/>
+        <Link id="$InternalCommandAction1$ActionLink" path="904,432,989,432,989,173,1104,173,1104,280"/>
+        <Link id="$InternalCommandAction2$ActionLink" path="904,448,1000,448,1000,408,1104,408,1104,488"/>
+        <Link id="$CommandAction12$ActionLink" path="904,416,1011,416,1011,495,298,495,298,432,344,432"/>
+        <Link id="$CommandAction3$ForwardLink" path="648,384,648,285,298,285,298,432,344,432"/>
         <Link id="$CommandAction4$ForwardLink" path="648,176,648,115,298,115,298,432,344,432"/>
         <Link id="$InternalCommandAction1$ForwardLink" path="1120,280,1120,115,298,115,298,432,344,432"/>
         <Link id="$InternalCommandAction2$ForwardLink" path="1120,488,1120,433,325,432,344,432"/>
